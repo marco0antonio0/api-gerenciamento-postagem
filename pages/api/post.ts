@@ -9,15 +9,15 @@ import { DeletePost } from "../../services/delete.service";
 import { VerifyToken } from "../../services/authMetodos.service";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Middleware para habilitar o CORS
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, OPTIONS"
+    "GET, OPTIONS, PATCH, DELETE, POST, PUT"
   );
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
   );
 
   const temp = req.method;
