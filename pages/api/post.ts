@@ -8,7 +8,10 @@ import { UpdatePost } from "../../services/update.service";
 import { DeletePost } from "../../services/delete.service";
 import { VerifyToken } from "../../services/authMetodos.service";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -20,11 +23,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
   );
 
-  const temp = req.method;
   const { authorization } = req.headers;
   var auth = VerifyToken(authorization as string);
+
   if (auth) {
-    switch (temp) {
+    switch (req.method) {
       case "GET":
         GetPost(req, res);
         break;

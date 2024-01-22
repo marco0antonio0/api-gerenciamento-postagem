@@ -5,7 +5,7 @@ type Data = {
   text: string;
 };
 export async function DeletePost(req: NextApiRequest, res: NextApiResponse) {
-  const { key } = req.body;
+  const { key } = JSON.parse(req.body);
   if (key) {
     try {
       var temp = await delPostByKey(key);
