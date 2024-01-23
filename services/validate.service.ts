@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import jwt from "jsonwebtoken";
 export async function checkToken(req: NextApiRequest, res: NextApiResponse) {
-  const { authorization } = req.headers;
+  const { authorization } = JSON.parse(req.body);
   const secretKey = process.env.JWT_SECRET;
 
   if (!authorization) {

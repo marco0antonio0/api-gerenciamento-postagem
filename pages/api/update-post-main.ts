@@ -6,6 +6,8 @@ import { GetPost } from "../../services/getPost.service";
 import { CreatePost } from "../../services/createPost.service";
 import { GetPostByKey } from "../../services/getPostByKey";
 import { VerifyToken } from "../../services/authMetodos.service";
+import { GetPostPrincipal } from "../../services/getPostPrincipal.service";
+import { UpdatePostMain } from "../../services/update.service";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -24,14 +26,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (auth) {
     switch (req.method) {
       case "POST":
-        GetPostByKey(req, res);
+        UpdatePostMain(req, res);
         break;
 
       default:
-        res.status(401).json({ error: "metodo invalido" });
+        res.status(401).json({ status: false, error: "metodo invalido" });
         break;
     }
   } else {
-    res.status(401).json({ state: false, error: "Não autorizado" });
+    res.status(401).json({ status: false, error: "Não autorizado" });
   }
 }

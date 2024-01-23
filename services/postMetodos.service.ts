@@ -91,7 +91,7 @@ async function setPostByKey(key: string, data: Data) {
 // atualiza o dado indicado pela key
 async function setPostByKeyTextPrincipal(data: Data) {
   try {
-    const reff = ref(db, "textoPrincipal/");
+    const reff = ref(db, "/textoPrincipal");
     if (data.title && data.text) {
       update(reff, {
         title: data.title,

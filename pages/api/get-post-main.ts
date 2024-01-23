@@ -6,6 +6,8 @@ import { GetPost } from "../../services/getPost.service";
 import { CreatePost } from "../../services/createPost.service";
 import { GetPostByKey } from "../../services/getPostByKey";
 import { VerifyToken } from "../../services/authMetodos.service";
+import { GetPostPrincipal } from "../../services/getPostPrincipal.service";
+import { UpdatePostMain } from "../../services/update.service";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -24,7 +26,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (auth) {
     switch (req.method) {
       case "POST":
-        GetPostByKey(req, res);
+        GetPostPrincipal(req, res);
         break;
 
       default:

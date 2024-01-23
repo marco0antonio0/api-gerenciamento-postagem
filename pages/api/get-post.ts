@@ -23,27 +23,14 @@ export default async function handler(
     "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
   );
 
-  const { authorization } = req.headers;
+  const { authorization } = JSON.parse(req.body);
   var auth = VerifyToken(authorization as string);
 
   if (auth) {
-    switch (req.method) {
-      case "GET":
-        GetPost(req, res);
-        break;
-      case "POST":
-        CreatePost(req, res);
-        break;
-      case "PUT":
-        UpdatePost(req, res);
-        break;
-      case "DELETE":
-        DeletePost(req, res);
-        break;
-
-      default:
-        res.status(401).json({ error: "metodo invalido" });
-        break;
+    if (req.method == "POST") {
+      GetPost(req, res);
+    } else {
+      res.status(401).json({ error: "metodo invalido" });
     }
   } else {
     res.status(401).json({ state: false, error: "Não autorizado" });
