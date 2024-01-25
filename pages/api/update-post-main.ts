@@ -2,12 +2,12 @@
 
 import { NextApiRequest, NextApiResponse } from "next";
 import Login from "../../services/login.service";
-import { GetPost } from "../../services/getPost.service";
-import { CreatePost } from "../../services/createPost.service";
-import { GetPostByKey } from "../../services/getPostByKey";
+import { GetPost } from "../../services/service-posts/getPost.service";
+import { CreatePost } from "../../services/service-posts/createPost.service";
+import { GetPostByKey } from "../../services/service-posts/getPostByKey";
 import { VerifyToken } from "../../services/authMetodos.service";
-import { GetPostPrincipal } from "../../services/getPostPrincipal.service";
-import { UpdatePostMain } from "../../services/update.service";
+import { GetPostPrincipal } from "../../services/service-posts/getPostPrincipal.service";
+import { UpdatePostMain } from "../../services/service-posts/update.service";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader("Access-Control-Allow-Credentials", "true");

@@ -1,12 +1,12 @@
 // api/exemplo.js
 
 import { NextApiRequest, NextApiResponse } from "next";
-import Login from "../../services/login.service";
-import { GetPost } from "../../services/getPost.service";
-import { CreatePost } from "../../services/createPost.service";
-import { UpdatePost } from "../../services/update.service";
-import { DeletePost } from "../../services/delete.service";
-import { VerifyToken } from "../../services/authMetodos.service";
+import Login from "../../../services/login.service";
+import { GetPost } from "../../../services/service-posts/getPost.service";
+import { CreatePost } from "../../../services/service-posts/createPost.service";
+import { UpdatePost } from "../../../services/service-posts/update.service";
+import { DeletePost } from "../../../services/service-posts/delete.service";
+import { VerifyToken } from "../../../services/authMetodos.service";
 
 export default async function handler(
   req: NextApiRequest,
@@ -24,12 +24,11 @@ export default async function handler(
   );
 
   const { authorization } = JSON.parse(req.body);
-
   var auth = VerifyToken(authorization as string);
 
   if (auth) {
     if (req.method == "POST") {
-      DeletePost(req, res);
+      GetPost(req, res);
     } else {
       res.status(401).json({ error: "metodo invalido" });
     }

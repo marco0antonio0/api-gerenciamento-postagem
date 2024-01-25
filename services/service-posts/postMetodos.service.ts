@@ -1,4 +1,4 @@
-import { db } from "../firebase.config";
+import { db } from "../../firebase.config";
 import { get, push, ref, remove, set, update } from "firebase/database";
 import { deleteDoc } from "firebase/firestore";
 type User = {

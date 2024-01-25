@@ -1,12 +1,8 @@
 // api/exemplo.js
 
 import { NextApiRequest, NextApiResponse } from "next";
-import Login from "../../services/login.service";
-import { GetPost } from "../../services/getPost.service";
-import { CreatePost } from "../../services/createPost.service";
-import { UpdatePost } from "../../services/update.service";
-import { DeletePost } from "../../services/delete.service";
-import { VerifyToken } from "../../services/authMetodos.service";
+import { UpdatePost } from "../../../services/service-informativo/update.service";
+import { VerifyToken } from "../../../services/authMetodos.service";
 
 export default async function handler(
   req: NextApiRequest,
@@ -29,12 +25,12 @@ export default async function handler(
 
   if (auth) {
     if (req.method == "POST") {
-      CreatePost(req, res);
+      UpdatePost(req, res);
     } else {
-      res.status(401).json({ error: "metodo invalido" });
+      res.status(401).json({ status: false, error: "metodo invalido" });
     }
   } else {
-    res.status(401).json({ state: false, error: "Não autorizado" });
+    res.status(401).json({ status: false, error: "Não autorizado" });
   }
 }
 // res.status(401).json({ error: "metodo invalido" });

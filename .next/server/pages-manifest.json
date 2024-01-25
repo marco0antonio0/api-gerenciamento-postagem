@@ -2,7 +2,12 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/get-post-main": "pages/api/get-post-main.js",
+  "/api/posts/get-post": "pages/api/posts/get-post.js",
   "/api/verify-token": "pages/api/verify-token.js",
-  "/api/get-post": "pages/api/get-post.js"
+  "/api/info/get-post": "pages/api/info/get-post.js",
+  "/api/get-post-main": "pages/api/get-post-main.js",
+  "/api/login": "pages/api/login.js",
+  "/api/posts/post-key": "pages/api/posts/post-key.js",
+  "/api/info/create-post": "pages/api/info/create-post.js",
+  "/api/posts/delete-post": "pages/api/posts/delete-post.js"
 }
